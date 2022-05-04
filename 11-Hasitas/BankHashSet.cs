@@ -31,12 +31,21 @@ namespace _11_Hasitas
                 HashFunction = DefaultHashing;
             else
                 HashFunction = fg;
+
+            for (int i = 0; i < _contents.Length; i++)
+            {
+                _contents[i] = new List<BankHashItem>();
+            }
         }
         public BankHashSet()
         {
             _size = 100;
             HashFunction = DefaultHashing;
             _contents = new List<BankHashItem>[_size];
+            for(int i = 0;i< _contents.Length;i++)
+            {
+                _contents[i] = new List<BankHashItem>();
+            }
         }
 
         public void Insert(K key, T content)

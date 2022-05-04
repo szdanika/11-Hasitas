@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _11_Hasitas
 {
+    public delegate void KuldesTortent(double money);
     internal class Bank
     {
         private BankHashSet<string, BankAccount> _accounts;
@@ -21,11 +22,17 @@ namespace _11_Hasitas
         {
             _accounts.Find(from).Withdraw(amount);
             _accounts.Find(to).Deposit(amount);
+            kuldes?.Invoke(_accounts.Find(to).Money);
+        }
+        public void AccountMoneys()
+        {
+            List<double> moneys = new List<double>();
         }
         public void RegisterAccount(string AccoutNumber, double deposit)
         {
             BankAccount b = new BankAccount(AccoutNumber, deposit);
             _accounts.Insert(AccoutNumber, b);
         }
+        public event KuldesTortent kuldes;
     }
 }
